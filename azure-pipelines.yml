@@ -19,7 +19,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: test
-    projects: '**/*Tests/*.csproj'
+    projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
     
 - task: DotNetCoreCLI@2
@@ -28,7 +28,7 @@ steps:
     command: 'test'
     arguments: '--configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
     publishTestResults: true
-    projects: '**/test-library/*.csproj' # update with your test project directory
+    projects: '**/*.csproj' # update with your test project directory
 
 - task: PublishCodeCoverageResults@1
   displayName: 'Publish code coverage report'
